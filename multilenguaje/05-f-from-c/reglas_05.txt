@@ -1,0 +1,14 @@
+Para llamar una subrutina de FORTRAN en un Script de C hice lo siguiente:
+1. Copié la subrutina f-sum.f90 y el archivo c-sum.h
+2. Intenté linkear ambos archivos, así como estaban haciendo: 
+gcc c-main.c f-sum.f90
+Obviamente tiró un cartel de error de linkeo.
+3. Edité el archivo c-sum.h y también el c-sum.c. 
+    - Cambié el nombre de la función por sum_abs_ 
+    - Saqué la función sum_abs_ del printf y le agregué el parámetro de salida asum.
+4. Con ambos archivos editados correctamente genero los objetos: 
+gcc -c c-main.c 
+gfortran -c f-sum.f90
+5. Hice el linkeo con: gcc c-main.o f-sum.o
+6. Hecho eso ejecuté el programa haciendo: ./a.out
+
