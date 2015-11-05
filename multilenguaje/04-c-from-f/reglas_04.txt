@@ -1,0 +1,13 @@
+Para llamar una subrutina de C en un Script de Fortran hice lo siguiente:
+1. Copié la subrutina c-sum.c y el archivo c-sum.h
+2. Intenté linkear ambos archivos, así como estaban haciendo: 
+gfortran f-main.f90 c-sum.c
+Obviamente tiró un cartel de error de linkeo.
+3. Para ver donde estaba el error de linkeo generé los objetos de f-main.f90 y de c-sum.c con los comandos:
+gfortran -c f-main.f90 y gcc -c c-sum.c
+4. Una vez generados los objetos utilicé el comando nm para observar las funciones de cada uno. Observé que el nombre de la función sum_abs figuraba distinto en ambos objetos.
+5. Edité el archivo c-sum.c y también el c-sum.h. Cambié el nombre de la función por sum_abs_ y cambié los valores por posiciones de punteros.
+6. Con ambos archivos editados correctamente hice el linkeo nuevamente con:
+gfortran f-main.f90 c-sum.c
+7. Hecho eso ejecuté el programa haciendo: ./a.out
+
