@@ -1,0 +1,10 @@
+Para llamar una subrutina de C++ en un Script de C hice lo siguiente:
+1. Copié la subrutina c-main.c
+2. En el programa c-main.c llamé al archivo .h llamado: cpp-sum.h
+3. Edité el programa cpp-sum.h para que el preprocesador tenga en cuenta si lo 
+estoy llamando desde C o desde C++.
+4. Generé los dos objetos con:
+gcc -c c-main.c
+g++ -c cpp-sum.cpp
+5. Hago el linkeo: gcc c-main.o cpp-sum-cpp
+6. Ejecuté el programa: ./a.out
